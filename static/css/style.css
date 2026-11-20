@@ -17,7 +17,8 @@ img { max-width: 100%; display: block; }
 button { font-family: var(--body); }
 button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid #B5121B; outline-offset: 3px; }
 
-.wrap { max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+.wrap { max-width: 1440px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+.nav-mobile { display: none; }
 .muted { color: var(--muted); }
 .small { font-size: 13px; }
 .display { margin: 0; font-family: var(--display); font-weight: 400; font-size: 52px; line-height: 1; }
@@ -164,10 +165,73 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .accordion p { margin: 12px 0 0; font-size: 15px; line-height: 1.6; }
 .product-page .section { padding-top: 80px; }
 
-@media (max-width: 640px) {
-  .wrap { padding: 0 16px; }
-  .hero-card { padding: 28px; }
-  .logo img { height: 64px; }
-  .display { font-size: 38px; }
-  .feature-dark { padding: 24px; }
+@media (max-width: 760px) {
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .announce { font-size: 10px; letter-spacing: .08em; padding: 8px 12px; }
+
+  /* Header: logo + cart on one row, menu as a swipeable strip */
+  .header-row { flex-wrap: nowrap; padding-top: 8px; padding-bottom: 8px; }
+  .nav-left, .header-right .nav { display: none; }
+  .header-right { flex: 0 0 auto; }
+  .logo img { height: 52px; }
+  .cart-btn { min-height: 40px; padding: 0 14px; font-size: 11px; }
+  .nav-mobile { display: flex; gap: 22px; overflow-x: auto; white-space: nowrap; padding: 10px 16px 12px; border-top: 2px solid var(--ink); font-size: 12px; font-weight: 800; letter-spacing: .08em; scrollbar-width: none; }
+  .nav-mobile::-webkit-scrollbar { display: none; }
+  .nav-mobile a { text-decoration: none; flex: none; }
+
+  /* Hero */
+  .hero { padding-top: 20px; padding-bottom: 32px; }
+  .hero-card { padding: 24px; gap: 16px; border-radius: 22px; box-shadow: 6px 6px 0 var(--ink); }
+  .hero-logo, .hero-copy { flex-basis: 100%; }
+  .hero-logo img { max-width: 190px; }
+  .hero-title { font-size: 40px; }
+  .hero-sub { font-size: 15px; }
+  .btn { padding: 13px 22px; font-size: 13px; }
+
+  /* Sections */
+  .section { padding-top: 8px; padding-bottom: 36px; }
+  .display { font-size: 32px; }
+  .section-head { margin-bottom: 16px; align-items: baseline; }
+  .section > .display { margin-bottom: 16px; }
+  .section-link { font-size: 12px; }
+
+  /* Product grid: 2 per row */
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .card { border-width: 2px; border-radius: 14px; box-shadow: 4px 4px 0 var(--ink); }
+  .card-body { border-top-width: 2px; padding: 10px; gap: 8px; }
+  .card-row { flex-direction: column; gap: 4px; }
+  .card-name, .card-price { font-size: 12px; }
+  .badge { top: 8px; left: 8px; font-size: 9px; padding: 3px 7px; }
+  .btn-outline { padding: 8px 6px; font-size: 10px; letter-spacing: .04em; box-shadow: 2px 2px 0 var(--ink); }
+
+  /* Feature cards */
+  .grid-cards { grid-template-columns: 1fr; gap: 20px; }
+  .feature { min-height: 0; border-radius: 22px; }
+  .feature-dark { padding: 20px; gap: 12px; }
+  .feature-dark .mini-logo { width: 80px; }
+  .feature-pair { min-height: 150px; gap: 10px; }
+  .feature-title { font-size: 26px; }
+  .feature-light .feature-img { min-height: 220px; }
+  .feature-light .feature-title { font-size: 22px; padding: 14px 18px; }
+
+  /* Newsletter + footer */
+  .newsletter-row { padding-top: 36px; padding-bottom: 36px; }
+  .newsletter-row h2 { font-size: 26px; flex-basis: 100%; }
+  .newsletter-form { flex-basis: 100%; }
+  .footer-row { flex-direction: column; align-items: flex-start; padding-top: 28px; padding-bottom: 28px; }
+  .footer-row img { height: 80px; }
+
+  /* Product page */
+  .product-page { padding-top: 16px; padding-bottom: 40px; }
+  .pdp { gap: 24px; }
+  .gallery, .pdp-info { flex-basis: 100%; }
+  .gallery-main { border-radius: 20px; box-shadow: 5px 5px 0 var(--ink); }
+  .thumbs { gap: 8px; }
+  .thumb.placeholder { font-size: 8px; padding: 4px; }
+  .pdp-info .display { font-size: 34px; }
+  .pdp-price { font-size: 22px; }
+  .product-page .section { padding-top: 40px; }
+
+  /* Cart drawer */
+  .cart-panel { max-width: 100%; border-left: 0; }
 }

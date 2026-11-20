@@ -31,6 +31,14 @@
         <button class="btn cart-btn" data-open-cart aria-label="Open cart">CART · <span data-cart-count>0</span></button>
       </div>
     </div>
+    <nav class="nav-mobile" aria-label="Shop menu">
+      <a href="{{ url_for('shop') }}">SHOP ALL</a>
+      <a href="{{ url_for('index') }}#new">NEW DROP</a>
+      <a href="{{ url_for('shop', category='tees') }}">TEES</a>
+      <a href="{{ url_for('shop', category='sets') }}">SETS</a>
+      <a href="{{ url_for('shop', category='headwear') }}">HEADWEAR</a>
+      <a href="#footer">ABOUT</a>
+    </nav>
   </header>
 
   <main>{% block content %}{% endblock %}</main>
