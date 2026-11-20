@@ -3,16 +3,20 @@
     <img src="{{ url_for('static', filename='images/' ~ p.image) }}" alt="{{ p.alt }}" loading="lazy">
     {% if p.badge %}<span class="badge {{ 'badge-new' if p.badge == 'New' else '' }}">{{ p.badge|upper }}</span>{% endif %}
   </a>
-  <a href="{{ url_for('product', slug=p.slug) }}" class="card-name">{{ p.name|upper }} “{{ p.color|upper }}”</a>
-  <span class="card-price">{{ p.price|money }}</span>
-  <button class="btn btn-outline"
-    data-add-to-cart
-    data-id="{{ p.slug }}"
-    data-name="{{ p.name|upper }} “{{ p.color|upper }}”"
-    data-price="{{ p.price if p.price is not none else '' }}"
-    data-size="{{ p.sizes[0] if p.sizes|length == 1 else '' }}"
-    data-img="{{ url_for('static', filename='images/' ~ p.image) }}"
-    {% if p.sizes|length > 1 %}data-href="{{ url_for('product', slug=p.slug) }}"{% endif %}>
-    {{ 'ADD TO CART' if p.sizes|length == 1 else 'CHOOSE SIZE' }}
-  </button>
+  <div class="card-body">
+    <div class="card-row">
+      <a href="{{ url_for('product', slug=p.slug) }}" class="card-name">{{ p.name|upper }} “{{ p.color|upper }}”</a>
+      <span class="card-price">{{ p.price|money }}</span>
+    </div>
+    <button class="btn btn-outline"
+      data-add-to-cart
+      data-id="{{ p.slug }}"
+      data-name="{{ p.name|upper }} “{{ p.color|upper }}”"
+      data-price="{{ p.price if p.price is not none else '' }}"
+      data-size="{{ p.sizes[0] if p.sizes|length == 1 else '' }}"
+      data-img="{{ url_for('static', filename='images/' ~ p.image) }}"
+      {% if p.sizes|length > 1 %}data-href="{{ url_for('product', slug=p.slug) }}"{% endif %}>
+      {{ 'ADD TO CART' if p.sizes|length == 1 else 'CHOOSE SIZE' }}
+    </button>
+  </div>
 </div>

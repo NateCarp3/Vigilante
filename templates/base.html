@@ -4,75 +4,61 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Vigilante{% endblock %}</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logos/logo-mascot-black.png') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <div class="announce">
-    <span>NEW DROP — OUT NOW</span><span class="sep" aria-hidden="true">|</span>
-    <span>FREE SHIPPING OVER $[XX]</span><span class="sep" aria-hidden="true">|</span>
-    <span>BUY NOW, PAY LATER</span>
-  </div>
+  <div class="announce">NEW DROP OUT NOW · FREE SHIPPING OVER $[XX] · BUY NOW, PAY LATER</div>
 
   <header class="site-header">
     <div class="wrap header-row">
-      <a href="{{ url_for('index') }}" class="logo" aria-label="Vigilante home">
-        <span class="logo-word">VIGILANTE</span>
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" class="logo-star"/></svg>
-      </a>
-      <nav class="main-nav" aria-label="Main">
+      <nav class="nav nav-left" aria-label="Shop">
         <a href="{{ url_for('shop') }}">SHOP ALL</a>
-        <a href="{{ url_for('index') }}#new" class="accent">NEW DROP</a>
-        <a href="{{ url_for('index') }}#best">BEST SELLERS</a>
+        <a href="{{ url_for('index') }}#new">NEW DROP</a>
         <a href="{{ url_for('shop', category='tees') }}">TEES</a>
         <a href="{{ url_for('shop', category='sets') }}">SETS</a>
-        <a href="{{ url_for('shop', category='headwear') }}">HEADWEAR</a>
-        <a href="#footer">TRACK ORDER</a>
-        <a href="#footer">ABOUT</a>
       </nav>
-      <div class="utils">
-        <button class="icon-btn" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
-        <button class="icon-btn" aria-label="Account"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></button>
-        <button class="cart-btn" data-open-cart aria-label="Open cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cart-count" data-cart-count>0</span></button>
+      <a href="{{ url_for('index') }}" class="logo" aria-label="Vigilante home">
+        <img src="{{ url_for('static', filename='images/logos/logo-mascot-black.png') }}" alt="Vigilante">
+      </a>
+      <div class="header-right">
+        <nav class="nav" aria-label="More">
+          <a href="{{ url_for('shop', category='headwear') }}">HEADWEAR</a>
+          <a href="#footer">ABOUT</a>
+        </nav>
+        <button class="btn cart-btn" data-open-cart aria-label="Open cart">CART · <span data-cart-count>0</span></button>
       </div>
     </div>
   </header>
 
   <main>{% block content %}{% endblock %}</main>
 
+  <section class="newsletter">
+    <div class="wrap newsletter-row">
+      <h2>GET THE DROP BEFORE EVERYONE ELSE.</h2>
+      <form class="newsletter-form" data-newsletter>
+        <label for="email">EMAIL ADDRESS</label>
+        <div class="newsletter-fields">
+          <input id="email" type="email" required placeholder="you@email.com">
+          <button type="submit" class="btn">SIGN UP</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <footer id="footer" class="site-footer">
-    <div class="wrap">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="logo-word big">VIGILANTE</span>
-          <span class="marker">Dreams don't die.</span>
-        </div>
-        <div class="footer-col">
-          <span class="footer-h">SHOP</span>
-          <a href="{{ url_for('shop') }}">All products</a>
-          <a href="{{ url_for('index') }}#new">New drop</a>
-          <a href="{{ url_for('shop', category='tees') }}">Tees</a>
-          <a href="{{ url_for('shop', category='sets') }}">Sets</a>
-          <a href="{{ url_for('shop', category='headwear') }}">Headwear</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-h">HELP</span>
-          <a href="#">Track your order</a>
-          <a href="#">Shipping policy</a>
-          <a href="#">Refund policy</a>
-          <a href="#">Contact us</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-h">FOLLOW</span>
-          <a href="#">Instagram</a>
-          <a href="#">About us</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Vigilante. All rights reserved.</span>
-        <span>[PAYMENT METHODS]</span>
-      </div>
+    <div class="wrap footer-row">
+      <img src="{{ url_for('static', filename='images/logos/logo-mascot-black.png') }}" alt="Vigilante">
+      <nav class="nav" aria-label="Footer">
+        <a href="#">Track order</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Contact</a>
+        <a href="#">Instagram</a>
+      </nav>
+      <span class="small muted">© 2026 Vigilante®</span>
     </div>
   </footer>
 
@@ -82,7 +68,7 @@
     <aside class="cart-panel" aria-label="Cart">
       <div class="cart-head">
         <h2>YOUR CART (<span data-cart-count>0</span>)</h2>
-        <button class="icon-btn" data-close-cart aria-label="Close cart"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+        <button class="icon-btn" data-close-cart aria-label="Close cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
       </div>
       <div class="cart-body" data-cart-lines></div>
       <div class="cart-foot">
