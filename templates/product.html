@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}{{ p.name }} “{{ p.color }}” — Vigilante{% endblock %}
+{% block content %}
+<div class="wrap product-page">
+  <nav aria-label="Breadcrumb" class="crumbs">
+    <a href="{{ url_for('index') }}">Home</a><span aria-hidden="true">/</span>
+    <a href="{{ url_for('shop', category=p.category) }}">{{ p.category|title }}</a><span aria-hidden="true">/</span>
+    <span>{{ p.name }}</span>
+  </nav>
+
+  <div class="pdp">
+    <div class="gallery">
+      <div class="gallery-main"><img src="{{ url_for('static', filename='images/' ~ p.image) }}" alt="{{ p.alt }}"></div>
+      <div class="thumbs">
+        <div class="thumb active"><img src="{{ url_for('static', filename='images/' ~ p.image) }}" alt="Front view"></div>
+        <div class="thumb placeholder">[BACK PHOTO]</div>
+        <div class="thumb placeholder">[DETAIL PHOTO]</div>
+        <div class="thumb placeholder">[ON-MODEL PHOTO]</div>
+      </div>
+    </div>
+
+    <div class="pdp-info" data-pdp
+      data-id="{{ p.slug }}"
+      data-name="{{ p.name|upper }} “{{ p.color|upper }}”"
+      data-price="{{ p.price if p.price is not none else '' }}"
+      data-img="{{ url_for('static', filename='images/' ~ p.image) }}">
+      {% if p.badge %}<span class="badge static {{ 'badge-new' if p.badge == 'New' else '' }}">{{ p.badge|upper }}</span>{% endif %}
+      <h1 class="display">{{ p.name|upper }}</h1>
+      <span class="pdp-price">{{ p.price|money }}</span>
+      <span class="muted small">Or pay in installments with [BNPL PROVIDER].</span>
+
+      <div class="opt">
+        <span class="opt-label">COLOR: <span class="muted">{{ p.color|upper }}</span></span>
+      </div>
+
+      <div class="opt">
+        <div class="opt-row">
+          <span class="opt-label">SIZE: <span class="muted" data-size-label>{{ p.sizes[0] if p.sizes|length == 1 else 'Select a size' }}</span></span>
+          <a href="#details" class="small">Size guide</a>
+        </div>
+        <div class="sizes" role="group" aria-label="Size">
+          {% for s in p.sizes %}
+          <button class="size-btn{{ ' on' if p.sizes|length == 1 else '' }}" data-size="{{ s }}" aria-pressed="{{ 'true' if p.sizes|length == 1 else 'false' }}">{{ s }}</button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="buy-row">
+        <div class="qty">
+          <button data-qty="-1" aria-label="Decrease quantity">−</button>
+          <span data-qty-val aria-live="polite">1</span>
+          <button data-qty="1" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="btn btn-dark btn-grow" data-pdp-add>{{ 'ADD TO CART' if p.sizes|length == 1 else 'SELECT A SIZE' }}</button>
+      </div>
+
+      <div id="details" class="accordion">
+        <details open>
+          <summary>DESCRIPTION <span aria-hidden="true">+</span></summary>
+          <p>{{ p.description }}</p>
+        </details>
+        <details>
+          <summary>SIZE &amp; FIT <span aria-hidden="true">+</span></summary>
+          <p>[ADD FIT NOTES AND SIZE CHART]</p>
+        </details>
+        <details>
+          <summary>SHIPPING &amp; RETURNS <span aria-hidden="true">+</span></summary>
+          <p>[ADD SHIPPING TIMES AND RETURN POLICY]</p>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2 class="display">YOU MAY ALSO LIKE</h2>
+    <div class="grid">
+      {% for p in related %}{% include "_card.html" %}{% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}
