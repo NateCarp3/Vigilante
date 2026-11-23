@@ -11,7 +11,7 @@
   const subtotalEl = document.querySelector('[data-cart-subtotal]');
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const money = (n) => '$' + n.toFixed(2);
+  const money = (n) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
 
   function render() {
     const count = cart.reduce((n, l) => n + l.qty, 0);
@@ -35,7 +35,7 @@
   }
 
   function add(item) {
-    const existing = cart.find((l) => l.id === item.id && l.size === item.size);
+    const existing = cart.find((l) => l.id === item.id && l.size === item.size && l.name === item.name);
     if (existing) existing.qty += item.qty; else cart.push(item);
     save(cart); render(); open();
   }
@@ -59,11 +59,22 @@
   const pdp = document.querySelector('[data-pdp]');
   if (pdp) {
     let size = null, qty = 1;
-    const sizeBtns = pdp.querySelectorAll('.size-btn');
+    const sizeBtns = pdp.querySelectorAll('.size-btn:not(.option-btn)');
     const addBtn = pdp.querySelector('[data-pdp-add]');
     const sizeLabel = pdp.querySelector('[data-size-label]');
     const qtyVal = pdp.querySelector('[data-qty-val]');
     if (sizeBtns.length === 1) size = sizeBtns[0].dataset.size;
+    // Piece options (e.g. sweatsuit: full set / hoodie only / pants only)
+    const optBtns = pdp.querySelectorAll('.option-btn');
+    const priceEl = pdp.querySelector('[data-pdp-price]');
+    const optLabel = pdp.querySelector('[data-option-label]');
+    let option = optBtns.length ? optBtns[0].dataset.option : null;
+    let price = optBtns.length ? parseFloat(optBtns[0].dataset.optionPrice) : (parseFloat(pdp.dataset.price) || null);
+    optBtns.forEach((b) => b.addEventListener('click', () => {
+      option = b.dataset.option; price = parseFloat(b.dataset.optionPrice);
+      optBtns.forEach((x) => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
+      optLabel.textContent = option.toUpperCase(); priceEl.textContent = '$' + price;
+    }));
     sizeBtns.forEach((b) => b.addEventListener('click', () => {
       size = b.dataset.size;
       sizeBtns.forEach((x) => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
@@ -74,7 +85,7 @@
     }));
     addBtn.addEventListener('click', () => {
       if (!size) { sizeLabel.textContent = 'Please select a size'; return; }
-      add({ id: pdp.dataset.id, name: pdp.dataset.name, price: parseFloat(pdp.dataset.price) || null, size, img: pdp.dataset.img, qty });
+      add({ id: pdp.dataset.id, name: pdp.dataset.name + (option ? ' — ' + option.toUpperCase() : ''), price, size, img: pdp.dataset.img, qty });
     });
   }
 

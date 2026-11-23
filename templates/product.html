@@ -26,12 +26,23 @@
       data-img="{{ url_for('static', filename='images/' ~ p.image) }}">
       {% if p.badge %}<span class="badge static {{ 'badge-new' if p.badge == 'New' else '' }}">{{ p.badge|upper }}</span>{% endif %}
       <h1 class="display">{{ p.name|upper }}</h1>
-      <span class="pdp-price">{{ p.price|money }}</span>
+      <span class="pdp-price" data-pdp-price>{{ p.price|money }}</span>
       <span class="muted small">Or pay in installments with [BNPL PROVIDER].</span>
 
       <div class="opt">
         <span class="opt-label">COLOR: <span class="muted">{{ p.color|upper }}</span></span>
       </div>
+
+      {% if p.options %}
+      <div class="opt">
+        <span class="opt-label">PIECE: <span class="muted" data-option-label>{{ p.options[0].label|upper }}</span></span>
+        <div class="sizes options" role="group" aria-label="Piece">
+          {% for o in p.options %}
+          <button class="size-btn option-btn{{ ' on' if loop.first else '' }}" data-option="{{ o.label }}" data-option-price="{{ o.price }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ o.label|upper }} · {{ o.price|money }}</button>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
 
       <div class="opt">
         <div class="opt-row">

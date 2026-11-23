@@ -148,8 +148,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .opt-row { display: flex; justify-content: space-between; align-items: center; }
 .opt-label { font-size: 12px; font-weight: 800; letter-spacing: .12em; }
 .opt-label .muted { font-weight: 600; }
-.sizes { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 10px; }
-.size-btn { min-height: 48px; border: var(--line); border-radius: 999px; background: #fff; color: var(--ink); font-weight: 800; font-size: 13px; cursor: pointer; }
+.sizes { display: flex; flex-wrap: wrap; gap: 10px; }
+.size-btn { min-width: 64px; padding: 0 18px; white-space: nowrap; min-height: 48px; border: var(--line); border-radius: 999px; background: #fff; color: var(--ink); font-weight: 800; font-size: 13px; cursor: pointer; }
 .size-btn:hover { background: #fde2e2; }
 .size-btn.on { background: var(--ink); color: #fff; }
 .buy-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }

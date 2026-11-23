@@ -2,14 +2,32 @@ from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
-# Product catalog. Replace "price" placeholders with real prices (numbers, in dollars).
+# Price list (dollars). Use these when adding new products.
+PRICES = {
+    "tee": 55,          # every shirt is $55
+    "sweatsuit": 125,   # full set; top $65, bottom $50 if bought separately
+    "sweatsuit_top": 65,
+    "sweatsuit_bottom": 50,
+    "beanie": 40,
+    "hat": 40,
+    "zip_hoodie": 80,
+    "pullover": 70,
+}
+
+SWEATSUIT_OPTIONS = [
+    {"label": "Full Set", "price": PRICES["sweatsuit"]},
+    {"label": "Hoodie Only", "price": PRICES["sweatsuit_top"]},
+    {"label": "Pants Only", "price": PRICES["sweatsuit_bottom"]},
+]
+
+# Product catalog
 PRODUCTS = [
     {
         "slug": "dreams-dont-die-tee",
         "name": "Dreams Don't Die Tee",
         "color": "Vintage Cream",
         "category": "tees",
-        "price": None,
+        "price": PRICES["tee"],
         "image": "tee-dreams-dont-die.jpg",
         "alt": "Dreams Don't Die graphic tee in vintage cream",
         "badge": "Best Seller",
@@ -23,7 +41,7 @@ PRODUCTS = [
         "name": "Vigi University Tee",
         "color": "Washed White",
         "category": "tees",
-        "price": None,
+        "price": PRICES["tee"],
         "image": "tee-vigi-university.jpg",
         "alt": "Vigi University distressed tee in washed white",
         "badge": "Best Seller",
@@ -35,7 +53,8 @@ PRODUCTS = [
         "name": "Vigilante Set",
         "color": "Blackout",
         "category": "sets",
-        "price": None,
+        "price": PRICES["sweatsuit"],
+        "options": SWEATSUIT_OPTIONS,
         "image": "set-blackout.jpg",
         "alt": "Black Vigilante hoodie and sweatpant set",
         "badge": "Best Seller",
@@ -47,7 +66,8 @@ PRODUCTS = [
         "name": "Vigilante Set",
         "color": "Heather Grey",
         "category": "sets",
-        "price": None,
+        "price": PRICES["sweatsuit"],
+        "options": SWEATSUIT_OPTIONS,
         "image": "set-heather-grey.jpg",
         "alt": "Heather grey Vigilante hoodie and sweatpant set",
         "badge": "New",
@@ -59,7 +79,7 @@ PRODUCTS = [
         "name": "Distressed Beanie",
         "color": "Black",
         "category": "headwear",
-        "price": None,
+        "price": PRICES["beanie"],
         "image": "beanie-black.jpg",
         "alt": "Black distressed knit beanie with Vigilante patch",
         "badge": "Best Seller",
@@ -71,7 +91,7 @@ PRODUCTS = [
         "name": "Distressed Beanie",
         "color": "Red",
         "category": "headwear",
-        "price": None,
+        "price": PRICES["beanie"],
         "image": "beanie-red.jpg",
         "alt": "Red distressed knit beanie with Vigilante patch",
         "badge": "New",
@@ -83,7 +103,7 @@ PRODUCTS = [
         "name": "Distressed Beanie",
         "color": "Pink",
         "category": "headwear",
-        "price": None,
+        "price": PRICES["beanie"],
         "image": "beanie-pink.jpg",
         "alt": "Pink distressed knit beanie with Vigilante patch",
         "badge": "New",
@@ -95,7 +115,7 @@ PRODUCTS = [
         "name": "Distressed Beanie",
         "color": "Charcoal",
         "category": "headwear",
-        "price": None,
+        "price": PRICES["beanie"],
         "image": "beanie-grey.jpg",
         "alt": "Charcoal distressed knit beanie with Vigilante patch",
         "badge": "New",
@@ -109,7 +129,9 @@ BY_SLUG = {p["slug"]: p for p in PRODUCTS}
 
 @app.template_filter("money")
 def money(value):
-    return f"${value:,.2f}" if value is not None else "$[XX]"
+    if value is None:
+        return "$[XX]"
+    return f"${value:,.0f}" if float(value).is_integer() else f"${value:,.2f}"
 
 
 @app.route("/")
