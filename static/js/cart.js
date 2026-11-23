@@ -2,6 +2,7 @@
 // Swap this for a real checkout (e.g. Stripe or Shopify) when you're ready to sell.
 (function () {
   const KEY = 'vigilante_cart';
+  const FREE_SHIPPING = 60; // free shipping on orders of this amount or more
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } };
   const save = (c) => { try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {} };
   let cart = load();
@@ -31,7 +32,13 @@
         </div>`).join('');
     }
     const allPriced = cart.length && cart.every((l) => l.price);
-    subtotalEl.textContent = allPriced ? money(cart.reduce((s, l) => s + l.price * l.qty, 0)) : '$[XX]';
+    const total = cart.reduce((s, l) => s + (l.price || 0) * l.qty, 0);
+    subtotalEl.textContent = allPriced ? money(total) : '$[XX]';
+    const shipEl = document.querySelector('[data-ship-msg]');
+    if (shipEl) {
+      shipEl.hidden = !cart.length;
+      shipEl.textContent = total >= FREE_SHIPPING ? 'You\'ve got free shipping!' : 'You\'re ' + money(FREE_SHIPPING - total) + ' away from free shipping.';
+    }
   }
 
   function add(item) {

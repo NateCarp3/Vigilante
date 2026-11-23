@@ -126,6 +126,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .link-btn { min-height: 44px; border: 0; background: transparent; font-size: 12px; font-weight: 700; text-decoration: underline; color: var(--ink); cursor: pointer; }
 .cart-foot { padding: 20px 24px; border-top: var(--line); display: flex; flex-direction: column; gap: 12px; }
 .cart-foot p { margin: 0; }
+.ship-msg { background: var(--red); border: var(--line); border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 800; text-align: center; }
+.ship-msg[hidden] { display: none; }
 .cart-subtotal { display: flex; justify-content: space-between; font-weight: 800; font-size: 15px; }
 .cart-foot .btn-dark { box-shadow: 4px 4px 0 var(--red); }
 

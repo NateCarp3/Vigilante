@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <div class="announce">NEW DROP OUT NOW · FREE SHIPPING OVER $[XX] · BUY NOW, PAY LATER</div>
+  <div class="announce">NEW DROP OUT NOW · FREE SHIPPING ON ORDERS OVER $60 · BUY NOW, PAY LATER</div>
 
   <header class="site-header">
     <div class="wrap header-row">
@@ -74,6 +74,7 @@
       </div>
       <div class="cart-body" data-cart-lines></div>
       <div class="cart-foot">
+        <p class="ship-msg" data-ship-msg></p>
         <div class="cart-subtotal"><span>SUBTOTAL</span><span data-cart-subtotal>$[XX]</span></div>
         <p class="muted small">Shipping and taxes calculated at checkout.</p>
         <button class="btn btn-dark btn-block">CHECKOUT</button>
