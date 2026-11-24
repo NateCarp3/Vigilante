@@ -1,0 +1,53 @@
+Handle,Title,Body (HTML),Vendor,Product Category,Type,Tags,Published,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Option3 Name,Option3 Value,Variant SKU,Variant Grams,Variant Inventory Tracker,Variant Inventory Qty,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Compare At Price,Variant Requires Shipping,Variant Taxable,Variant Barcode,Image Src,Image Position,Image Alt Text,Gift Card,SEO Title,SEO Description,Variant Image,Variant Weight Unit,Variant Tax Code,Cost per item,Status
+dreams-dont-die-tee,Dreams Don't Die Tee “Vintage Cream”,"<p>Hand-drawn Vigilante graphic — skyline, stars and stripes, and the V signal — across a washed, distressed cream tee. Raw edges and worn-in holes, finished with Dreams Don't Die at the hem.</p>",Vigilante,,Tees,"tees, best-seller",TRUE,Size,S,,,,,VIG-DREAMSDONTDIET-S,230,,,deny,manual,55.00,,TRUE,TRUE,,https://vigilante-2bhh.onrender.com/static/images/tee-dreams-dont-die.jpg,1,Dreams Don't Die Tee in Vintage Cream,FALSE,,,,g,,,active
+dreams-dont-die-tee,,,,,,,,,M,,,,,VIG-DREAMSDONTDIET-M,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+dreams-dont-die-tee,,,,,,,,,L,,,,,VIG-DREAMSDONTDIET-L,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+dreams-dont-die-tee,,,,,,,,,XL,,,,,VIG-DREAMSDONTDIET-XL,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+dreams-dont-die-tee,,,,,,,,,2XL,,,,,VIG-DREAMSDONTDIET-2XL,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+dreams-dont-die-tee,,,,,,,,,3XL,,,,,VIG-DREAMSDONTDIET-3XL,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigi-university-tee,Vigi University Tee “Washed White”,"<p>Washed, distressed tee with the Vigi University graduate print.</p>",Vigilante,,Tees,"tees, best-seller",TRUE,Size,S,,,,,VIG-VIGIUNIVERSITY-S,230,,,deny,manual,55.00,,TRUE,TRUE,,https://vigilante-2bhh.onrender.com/static/images/tee-vigi-university.jpg,1,Vigi University Tee in Washed White,FALSE,,,,g,,,active
+vigi-university-tee,,,,,,,,,M,,,,,VIG-VIGIUNIVERSITY-M,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigi-university-tee,,,,,,,,,L,,,,,VIG-VIGIUNIVERSITY-L,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigi-university-tee,,,,,,,,,XL,,,,,VIG-VIGIUNIVERSITY-XL,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigi-university-tee,,,,,,,,,2XL,,,,,VIG-VIGIUNIVERSITY-2XL,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigi-university-tee,,,,,,,,,3XL,,,,,VIG-VIGIUNIVERSITY-3XL,230,,,deny,manual,55.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,Vigilante Sweatsuit “Blackout”,<p>Hoodie and sweatpant set with the Vigilante V logo. Buy the full set or either piece on its own.</p>,Vigilante,,Sweatsuits,"sets, best-seller",TRUE,Piece,Full Set,Size,S,,,VIG-VIGILANTESWEAT-FULLSET-S,900,,,deny,manual,125.00,,TRUE,TRUE,,https://vigilante-2bhh.onrender.com/static/images/set-blackout.jpg,1,Vigilante Sweatsuit in Blackout,FALSE,,,,g,,,active
+vigilante-sweatsuit-blackout,,,,,,,,,Full Set,,M,,,VIG-VIGILANTESWEAT-FULLSET-M,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Full Set,,L,,,VIG-VIGILANTESWEAT-FULLSET-L,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Full Set,,XL,,,VIG-VIGILANTESWEAT-FULLSET-XL,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Full Set,,2XL,,,VIG-VIGILANTESWEAT-FULLSET-2XL,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Full Set,,3XL,,,VIG-VIGILANTESWEAT-FULLSET-3XL,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Hoodie Only,,S,,,VIG-VIGILANTESWEAT-HOODIEONLY-S,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Hoodie Only,,M,,,VIG-VIGILANTESWEAT-HOODIEONLY-M,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Hoodie Only,,L,,,VIG-VIGILANTESWEAT-HOODIEONLY-L,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Hoodie Only,,XL,,,VIG-VIGILANTESWEAT-HOODIEONLY-XL,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Hoodie Only,,2XL,,,VIG-VIGILANTESWEAT-HOODIEONLY-2XL,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Hoodie Only,,3XL,,,VIG-VIGILANTESWEAT-HOODIEONLY-3XL,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Pants Only,,S,,,VIG-VIGILANTESWEAT-PANTSONLY-S,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Pants Only,,M,,,VIG-VIGILANTESWEAT-PANTSONLY-M,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Pants Only,,L,,,VIG-VIGILANTESWEAT-PANTSONLY-L,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Pants Only,,XL,,,VIG-VIGILANTESWEAT-PANTSONLY-XL,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Pants Only,,2XL,,,VIG-VIGILANTESWEAT-PANTSONLY-2XL,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-blackout,,,,,,,,,Pants Only,,3XL,,,VIG-VIGILANTESWEAT-PANTSONLY-3XL,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,Vigilante Sweatsuit “Heather Grey”,<p>Hoodie and sweatpant set with the Vigilante V logo. Buy the full set or either piece on its own.</p>,Vigilante,,Sweatsuits,"sets, new",TRUE,Piece,Full Set,Size,S,,,VIG-VIGILANTESWEAT-FULLSET-S,900,,,deny,manual,125.00,,TRUE,TRUE,,https://vigilante-2bhh.onrender.com/static/images/set-heather-grey.jpg,1,Vigilante Sweatsuit in Heather Grey,FALSE,,,,g,,,active
+vigilante-sweatsuit-heather-grey,,,,,,,,,Full Set,,M,,,VIG-VIGILANTESWEAT-FULLSET-M,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Full Set,,L,,,VIG-VIGILANTESWEAT-FULLSET-L,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Full Set,,XL,,,VIG-VIGILANTESWEAT-FULLSET-XL,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Full Set,,2XL,,,VIG-VIGILANTESWEAT-FULLSET-2XL,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Full Set,,3XL,,,VIG-VIGILANTESWEAT-FULLSET-3XL,900,,,deny,manual,125.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Hoodie Only,,S,,,VIG-VIGILANTESWEAT-HOODIEONLY-S,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Hoodie Only,,M,,,VIG-VIGILANTESWEAT-HOODIEONLY-M,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Hoodie Only,,L,,,VIG-VIGILANTESWEAT-HOODIEONLY-L,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Hoodie Only,,XL,,,VIG-VIGILANTESWEAT-HOODIEONLY-XL,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Hoodie Only,,2XL,,,VIG-VIGILANTESWEAT-HOODIEONLY-2XL,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Hoodie Only,,3XL,,,VIG-VIGILANTESWEAT-HOODIEONLY-3XL,550,,,deny,manual,65.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Pants Only,,S,,,VIG-VIGILANTESWEAT-PANTSONLY-S,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Pants Only,,M,,,VIG-VIGILANTESWEAT-PANTSONLY-M,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Pants Only,,L,,,VIG-VIGILANTESWEAT-PANTSONLY-L,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Pants Only,,XL,,,VIG-VIGILANTESWEAT-PANTSONLY-XL,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Pants Only,,2XL,,,VIG-VIGILANTESWEAT-PANTSONLY-2XL,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+vigilante-sweatsuit-heather-grey,,,,,,,,,Pants Only,,3XL,,,VIG-VIGILANTESWEAT-PANTSONLY-3XL,400,,,deny,manual,50.00,,TRUE,TRUE,,,,,,,,,g,,,
+distressed-beanie-black,Distressed Beanie “Black”,<p>Oversized rib-knit beanie with distressed edges and the Vigilante star patch.</p>,Vigilante,,Beanies,"headwear, beanies, best-seller",TRUE,Size,One Size,,,,,VIG-DISTRESSEDBEAN-ONESIZE,120,,,deny,manual,40.00,,TRUE,TRUE,,https://vigilante-2bhh.onrender.com/static/images/beanie-black.jpg,1,Distressed Beanie in Black,FALSE,,,,g,,,active
+distressed-beanie-red,Distressed Beanie “Red”,<p>Oversized rib-knit beanie with distressed edges and the Vigilante star patch.</p>,Vigilante,,Beanies,"headwear, beanies, new",TRUE,Size,One Size,,,,,VIG-DISTRESSEDBEAN-ONESIZE,120,,,deny,manual,40.00,,TRUE,TRUE,,https://vigilante-2bhh.onrender.com/static/images/beanie-red.jpg,1,Distressed Beanie in Red,FALSE,,,,g,,,active
+distressed-beanie-pink,Distressed Beanie “Pink”,<p>Oversized rib-knit beanie with distressed edges and the Vigilante star patch.</p>,Vigilante,,Beanies,"headwear, beanies, new",TRUE,Size,One Size,,,,,VIG-DISTRESSEDBEAN-ONESIZE,120,,,deny,manual,40.00,,TRUE,TRUE,,https://vigilante-2bhh.onrender.com/static/images/beanie-pink.jpg,1,Distressed Beanie in Pink,FALSE,,,,g,,,active
+distressed-beanie-charcoal,Distressed Beanie “Charcoal”,<p>Oversized rib-knit beanie with distressed edges and the Vigilante star patch.</p>,Vigilante,,Beanies,"headwear, beanies, new",TRUE,Size,One Size,,,,,VIG-DISTRESSEDBEAN-ONESIZE,120,,,deny,manual,40.00,,TRUE,TRUE,,https://vigilante-2bhh.onrender.com/static/images/beanie-grey.jpg,1,Distressed Beanie in Charcoal,FALSE,,,,g,,,active

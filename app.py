@@ -1,6 +1,16 @@
-from flask import Flask, render_template, abort
+import os
+
+import stripe
+from flask import Flask, render_template, abort, request, jsonify, url_for
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)  # Render sits in front of the app
+
+# --- Stripe checkout settings (set these in Render → Environment) ---
+stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")        # sk_test_... or sk_live_...
+FREE_SHIPPING_MIN = 60                                        # free shipping on orders of $60+
+STANDARD_SHIPPING = os.environ.get("STANDARD_SHIPPING")       # shipping charge in dollars for orders under $60, e.g. "8"
 
 # Price list (dollars). Use these when adding new products.
 PRICES = {
@@ -159,6 +169,87 @@ def product(slug):
         abort(404)
     related = [x for x in PRODUCTS if x["slug"] != slug][:4]
     return render_template("product.html", p=p, related=related)
+
+
+def unit_price(p, option):
+    """Price in dollars for a product (and sweatsuit piece), taken from the catalog — never from the browser."""
+    if p.get("options"):
+        return next((o["price"] for o in p["options"] if o["label"] == option), None)
+    return p["price"]
+
+
+@app.post("/create-checkout-session")
+def create_checkout_session():
+    if not stripe.api_key:
+        return jsonify(error="Checkout isn't switched on yet."), 503
+    items = (request.get_json(silent=True) or {}).get("items") or []
+    line_items, subtotal = [], 0
+    for it in items[:50]:
+        p = BY_SLUG.get(str(it.get("id")))
+        size = it.get("size")
+        option = it.get("option") or None
+        price = unit_price(p, option) if p else None
+        if not p or size not in p["sizes"] or price is None:
+            return jsonify(error="Something in your cart is no longer available. Please remove it and try again."), 400
+        try:
+            qty = max(1, min(10, int(it.get("qty", 1))))
+        except (TypeError, ValueError):
+            qty = 1
+        name = f"{p['name']} \u201c{p['color']}\u201d" + (f" \u2014 {option}" if option else "")
+        line_items.append({
+            "price_data": {
+                "currency": "usd",
+                "unit_amount": int(round(price * 100)),
+                "product_data": {
+                    "name": name,
+                    "description": f"Size: {size}",
+                    "images": [url_for("static", filename="images/" + p["image"], _external=True)],
+                    "metadata": {"slug": p["slug"], "size": size, "option": option or ""},
+                },
+            },
+            "quantity": qty,
+        })
+        subtotal += price * qty
+    if not line_items:
+        return jsonify(error="Your cart is empty."), 400
+
+    if subtotal >= FREE_SHIPPING_MIN:
+        shipping = {"display_name": "Free shipping", "amount": 0}
+    elif STANDARD_SHIPPING:
+        shipping = {"display_name": "Standard shipping", "amount": int(round(float(STANDARD_SHIPPING) * 100))}
+    else:
+        return jsonify(error="Shipping isn't set up yet."), 503
+
+    try:
+        session = stripe.checkout.Session.create(
+            mode="payment",
+            line_items=line_items,
+            shipping_address_collection={"allowed_countries": ["US"]},
+            shipping_options=[{"shipping_rate_data": {
+                "type": "fixed_amount",
+                "display_name": shipping["display_name"],
+                "fixed_amount": {"amount": shipping["amount"], "currency": "usd"},
+            }}],
+            phone_number_collection={"enabled": True},
+            success_url=url_for("order_success", _external=True) + "?session_id={CHECKOUT_SESSION_ID}",
+            cancel_url=url_for("index", _external=True),
+        )
+    except stripe.StripeError as e:
+        app.logger.error("Stripe error: %s", e)
+        return jsonify(error="Checkout is having trouble right now. Please try again."), 502
+    return jsonify(url=session.url)
+
+
+@app.route("/order/success")
+def order_success():
+    session = None
+    sid = request.args.get("session_id", "")
+    if stripe.api_key and sid.startswith("cs_"):
+        try:
+            session = stripe.checkout.Session.retrieve(sid)
+        except stripe.StripeError:
+            session = None
+    return render_template("success.html", session=session)
 
 
 if __name__ == "__main__":

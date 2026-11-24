@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Order confirmed — Vigilante{% endblock %}
+{% block content %}
+<section class="wrap hero" data-clear-cart>
+  <div class="hero-card">
+    <div class="hero-logo">
+      <img src="{{ url_for('static', filename='images/logos/logo-mascot-black.png') }}" alt="Vigilante mascot">
+    </div>
+    <div class="hero-copy">
+      <h1 class="hero-title">YOU CAUGHT IT.</h1>
+      {% if session and session.payment_status == 'paid' %}
+        <p class="hero-sub">Thanks{% if session.customer_details and session.customer_details.name %}, {{ session.customer_details.name.split(' ')[0] }}{% endif %}! Your order is confirmed. A receipt is on its way to {{ session.customer_details.email }}.</p>
+      {% else %}
+        <p class="hero-sub">Thanks for your order! A receipt is on its way to your email.</p>
+      {% endif %}
+      <div class="btn-row">
+        <a href="{{ url_for('shop') }}" class="btn btn-dark">KEEP SHOPPING</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

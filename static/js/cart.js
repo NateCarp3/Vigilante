@@ -92,9 +92,26 @@
     }));
     addBtn.addEventListener('click', () => {
       if (!size) { sizeLabel.textContent = 'Please select a size'; return; }
-      add({ id: pdp.dataset.id, name: pdp.dataset.name + (option ? ' — ' + option.toUpperCase() : ''), price, size, img: pdp.dataset.img, qty });
+      add({ id: pdp.dataset.id, name: pdp.dataset.name + (option ? ' — ' + option.toUpperCase() : ''), option, price, size, img: pdp.dataset.img, qty });
     });
   }
+
+  // Checkout: send the cart to the server, which creates a Stripe Checkout page
+  const checkoutBtn = document.querySelector('[data-checkout]');
+  const checkoutErr = document.querySelector('[data-checkout-error]');
+  if (checkoutBtn) checkoutBtn.addEventListener('click', () => {
+    if (!cart.length) return;
+    checkoutBtn.disabled = true; checkoutBtn.textContent = 'LOADING…'; checkoutErr.hidden = true;
+    fetch('/create-checkout-session', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: cart.map((l) => ({ id: l.id, size: l.size, option: l.option || null, qty: l.qty })) })
+    }).then((r) => r.json().then((d) => ({ ok: r.ok, d })))
+      .then(({ ok, d }) => { if (ok && d.url) { window.location = d.url; } else { throw new Error(d.error || 'Checkout failed.'); } })
+      .catch((e) => { checkoutErr.hidden = false; checkoutErr.textContent = e.message; checkoutBtn.disabled = false; checkoutBtn.textContent = 'CHECKOUT'; });
+  });
+
+  // After a successful payment, empty the cart
+  if (document.querySelector('[data-clear-cart]')) { cart = []; save(cart); }
 
   // Newsletter (front-end only for now)
   const nl = document.querySelector('[data-newsletter]');
